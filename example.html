@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Example of mQuery</title>
+<style type="text/css">
+input { width:90%; line-height:1.6em; font-size: 16px; }
+</style>
+<script type="text/javascript" src="mQuery.js"></script>
+</head>
+
+<body>
+
+<h3 title="123">I'm h3, and the ul.id="ul"</h3>
+<ul id="ul" class="list">
+	<li class="li" id="li1">li <a>a</a> <span>span</span></li>
+	<li class="li" id="li2">li <a>a</a> <span>span</span></li>
+	<li class="li" id="li3">li <a>a</a> <span>span</span></li>
+	<li class="li" id="li4">li <a>a</a> <span>span</span></li>
+	<li class="li" id="li5">li <a>a</a> <span>span</span></li>
+</ul>
+<h3 title="abc">I'm h3, and the ol.id="ol"</h3>
+<ol id="ol" class="list">
+	<li class="li" id="oli1">li <a>a</a> <span>span</span></li>
+	<li class="li" id="oli2">li <a>a</a> <span>span</span></li>
+	<li class="li" id="oli3">li <a>a</a> <span>span</span></li>
+	<li class="li" id="oli4">li <a>a</a> <span>span</span></li>
+	<li class="li" id="oli5">li <a>a</a> <span>span</span></li>
+</ol>
+<hr />
+
+<div>Edit the selector here</div>
+<input type="text" id="editor" value="ul>li:lt(2)>a,  h3:eq(0),  li:qt(3),  .list:not(ul)" />
+
+<script type="text/javascript">
+
+window.onload = function(){
+	var editor = document.getElementById('editor');
+	var doms = [];
+
+	editor.onkeyup = run;
+
+	run()
+
+	function run(){
+		reset(doms);
+		draw(doms = mQuery.Q(editor.value));
+	}
+
+	function draw(arr){
+		for(var i = 0; i < arr.length; i++){
+			arr[i].style.cssText = 'font-weight:bold; color:#f00; border:1px solid #f00;';
+		}
+	}
+
+	function reset(arr){
+		for(var i = 0; i < arr.length; i++){
+			arr[i].style.cssText = '';
+		}
+	}
+}
+
+</script>
+
+</body>
+
+</html>
